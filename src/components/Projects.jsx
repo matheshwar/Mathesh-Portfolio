@@ -1,10 +1,18 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Star, GitFork, BookMarked } from 'lucide-react'
+import { ExternalLink, Star, GitFork, BookMarked, Sparkles, Activity } from 'lucide-react'
 import { Github } from './BrandIcons'
 import Section from './Section'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { PROJECTS } from '../data'
+
+// Maps a project fact's `icon` key to its lucide component.
+const FACT_ICONS = {
+  star: Star,
+  fork: GitFork,
+  sparkles: Sparkles,
+  activity: Activity,
+}
 
 function StatCallout({ stat, index }) {
   return (
@@ -32,14 +40,20 @@ function ProjectCard({ project }) {
         <div className="flex items-center justify-between border-b border-line bg-surface-2 px-5 py-3">
           <div className="flex items-center gap-2 font-mono text-sm">
             <BookMarked className="h-4 w-4 text-accent" />
-            <span className="text-ink-soft">matheshwar</span>
-            <span className="text-ink-dim">/</span>
-            <span className="font-semibold text-accent">
-              {project.repo.split('/')[1]}
-            </span>
+            {project.repo ? (
+              <>
+                <span className="text-ink-soft">matheshwar</span>
+                <span className="text-ink-dim">/</span>
+                <span className="font-semibold text-accent">
+                  {project.repo.split('/')[1]}
+                </span>
+              </>
+            ) : (
+              <span className="font-semibold text-accent">{project.slug}</span>
+            )}
           </div>
           <span className="rounded border border-line px-2 py-0.5 font-mono text-[10px] text-ink-dim">
-            Public
+            {project.badge ?? 'Public'}
           </span>
         </div>
 
@@ -56,18 +70,23 @@ function ProjectCard({ project }) {
             ))}
           </div>
 
-          {/* language + tags row */}
+          {/* language + facts row */}
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <span className="flex items-center gap-1.5 font-mono text-xs text-ink-soft">
               <span className="h-3 w-3 rounded-full bg-accent" />
               {project.language}
             </span>
-            <span className="flex items-center gap-1 font-mono text-xs text-ink-dim">
-              <Star className="h-3.5 w-3.5" /> production-grade
-            </span>
-            <span className="flex items-center gap-1 font-mono text-xs text-ink-dim">
-              <GitFork className="h-3.5 w-3.5" /> GitOps
-            </span>
+            {project.facts?.map((fact) => {
+              const Icon = FACT_ICONS[fact.icon] ?? Star
+              return (
+                <span
+                  key={fact.text}
+                  className="flex items-center gap-1 font-mono text-xs text-ink-dim"
+                >
+                  <Icon className="h-3.5 w-3.5" /> {fact.text}
+                </span>
+              )
+            })}
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
@@ -81,17 +100,19 @@ function ProjectCard({ project }) {
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="group mt-6 inline-flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/5 px-4 py-2.5 font-mono text-sm text-accent transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_24px_-6px_var(--color-accent)]"
-          >
-            <Github className="h-4 w-4" />
-            <span className="font-semibold">View Repository</span>
-            <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          {/* CTA — only when the project has a public repo */}
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="group mt-6 inline-flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/5 px-4 py-2.5 font-mono text-sm text-accent transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_24px_-6px_var(--color-accent)]"
+            >
+              <Github className="h-4 w-4" />
+              <span className="font-semibold">View Repository</span>
+              <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          )}
         </div>
       </div>
     </Reveal>
@@ -111,7 +132,7 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 gap-5">
         {PROJECTS.map((project) => (
-          <ProjectCard key={project.repo} project={project} />
+          <ProjectCard key={project.name} project={project} />
         ))}
       </div>
     </Section>

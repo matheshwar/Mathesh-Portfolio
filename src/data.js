@@ -127,6 +127,27 @@ export const EXPERIENCE = [
 
 export const PROJECTS = [
   {
+    name: 'K8s Ops Assistant',
+    // On-prem work — no public repo. `slug` shows in the card header in place
+    // of the matheshwar/<repo> path; `badge` replaces the "Public" pill.
+    slug: 'k8s-ops-assistant',
+    badge: 'on-prem',
+    description:
+      'An AI-powered Kubernetes Operations Assistant that turns cluster health, metrics, and logs into natural-language answers. AnythingLLM orchestrates MCP-based tools — k8sgpt, Prometheus, and Grafana/Loki — with the Gemini API to automate root cause analysis across a 9-node on-prem cluster running Kubernetes v1.34.3.',
+    language: 'YAML / Helm',
+    // TODO: the % values below are illustrative — replace with your measured numbers.
+    stats: [
+      { value: '~65%', label: 'faster diagnostics', detail: 'NL queries via k8sgpt + MCP' },
+      { value: '~50%', label: 'lower MTTR', detail: 'Automated root cause analysis' },
+      { value: '9 nodes', label: 'on-prem cluster', detail: 'Kubernetes v1.34.3' },
+    ],
+    facts: [
+      { icon: 'sparkles', text: 'AI-powered' },
+      { icon: 'activity', text: 'observability' },
+    ],
+    tags: ['Kubernetes', 'MCP', 'k8sgpt', 'AnythingLLM', 'Prometheus', 'Grafana', 'Loki', 'Gemini API'],
+  },
+  {
     name: 'End-to-End DevOps for a Go Web Application',
     repo: 'matheshwar/End-to-End-DevOps-for-a-Go-Web-Application',
     description:
@@ -136,6 +157,10 @@ export const PROJECTS = [
       { value: '~50%', label: 'smaller image', detail: 'Multi-stage Docker builds' },
       { value: '~60%', label: 'faster deploys', detail: 'GitHub Actions & ArgoCD' },
       { value: '~70%', label: 'better scalability / HA', detail: 'Kubernetes, ArgoCD & Helm' },
+    ],
+    facts: [
+      { icon: 'star', text: 'production-grade' },
+      { icon: 'fork', text: 'GitOps' },
     ],
     tags: ['Docker', 'GitHub Actions', 'ArgoCD', 'Kubernetes', 'Helm'],
     url: 'https://github.com/matheshwar/End-to-End-DevOps-for-a-Go-Web-Application',
