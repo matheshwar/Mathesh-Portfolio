@@ -10,9 +10,9 @@ export const CONTACT = {
   handle: 'matheshwar-s-r',
   title: 'DevOps Engineer',
   // TODO: replace with real values ↓
-  email: 'matheshwar.sr@example.com',
-  phone: '+91 00000 00000',
-  linkedin: 'https://www.linkedin.com/in/matheshwar-s-r',
+  email: 'matheshwar.srinivasan@gmail.com',
+  phone: '+91 7338933841',
+  linkedin: 'https://www.linkedin.com/in/matheshwar-s-r-95796a1b0/',
   github: 'https://github.com/matheshwar',
   // BASE_URL is '/' in dev and '/Mathesh-Portfolio/' in the GitHub Pages build,
   // so the resume resolves correctly under the project subpath.
