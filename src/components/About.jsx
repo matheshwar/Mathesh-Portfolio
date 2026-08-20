@@ -43,14 +43,26 @@ export default function About() {
               <h4 className="mb-2 font-mono text-sm font-semibold text-accent">
                 ## About
               </h4>
-              <p className="leading-relaxed text-ink-soft">
-                DevOps Engineer with hands-on experience across the full
-                pipeline — containers, orchestration, CI/CD, IaC, and
-                observability on AWS. I turn manual, fragile deployments into
-                automated, self-healing systems: containerized workloads on
-                Kubernetes, infrastructure defined as code, and pipelines that
-                ship to production with confidence and zero downtime.
-              </p>
+              <div className="space-y-4 leading-relaxed text-ink-soft">
+                <p>
+                  I don’t just deploy applications — I build the infrastructure
+                  that keeps them running at scale, without failure and without
+                  downtime. I’ve taken real ownership of modernizing how
+                  applications are built, shipped, and monitored: migrating
+                  legacy PM2/nohup deployments into fully containerized Docker
+                  environments, then orchestrating them on Kubernetes with
+                  Blue-Green deployments for zero-downtime releases.
+                </p>
+                <p>
+                  I build end-to-end CI/CD pipelines with Jenkins and GitHub
+                  Actions, and stand up a full observability stack — Prometheus,
+                  Grafana, Loki, Promtail, and Tempo — giving teams complete
+                  visibility into metrics, logs, and traces. What drives me
+                  isn’t the tooling; it’s the outcome: systems that scale,
+                  pipelines that don’t break at 2AM, and teams that ship with
+                  confidence.
+                </p>
+              </div>
             </div>
 
             <div>
