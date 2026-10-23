@@ -105,7 +105,9 @@ export const EXPERIENCE = [
     current: true,
     points: [
       'Migrated legacy PM2/nohup deployments to Docker + Kubernetes, implementing Blue-Green deployments for zero-downtime releases',
-      'Built end-to-end CI/CD pipelines with Jenkins and GitHub Actions across dev, staging, and production',
+      'Built Jenkins and GitHub Actions pipelines across dev, UAT, and production: build → SonarQube → Gitleaks → Trivy scan → push to Harbor → Blue-Green deploy',
+      'Integrated SonarQube quality gates and Gitleaks full-history secret scanning into Jenkins pipelines, shifting security checks left into every build',
+      'Deployed a self-hosted Harbor registry with Trivy vulnerability scanning, ensuring every Jenkins-built image is scanned before Blue-Green rollout to on-prem Kubernetes',
       'Deployed a full observability stack: Prometheus, Grafana, Loki, Promtail, Tempo',
       'Managed AWS infrastructure as code using Terraform',
       'Deployed and configured apps on IIS for Windows-based hosting',
